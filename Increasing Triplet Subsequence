@@ -1,0 +1,30 @@
+class Solution {
+    public boolean increasingTriplet(int[] nums) {
+        
+        int len = nums.length;
+        if(len < 3)
+            return false;
+        int firstMin = nums[0];
+        int secondMin = 0;
+        int i = 0;
+        for(i = 1; i < len; i++){
+            
+            if(nums[i] <= firstMin)
+                firstMin = nums[i];
+            else{
+                secondMin = nums[i];
+                break;
+            }   
+        }
+        for(int j = i + 1; j < len; j++){
+            
+            if( nums[j] > secondMin)
+                return true;
+            else if( nums[j] > firstMin)
+                secondMin = nums[j];
+            else
+                firstMin = nums[j];
+        }
+        return false;
+    }
+}
